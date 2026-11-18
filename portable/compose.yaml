@@ -1,0 +1,84 @@
+x-backend: &backend
+  image: oridrug-release/backend:0.7.1
+  platform: linux/amd64
+  pull_policy: never
+  environment:
+    DJANGO_SETTINGS_MODULE: config.portable_settings
+    DJANGO_SECRET_KEY: ${ORIDRUG_DJANGO_KEY:?Start with the launcher to generate settings}
+    DJANGO_ALLOWED_HOSTS: ${ORIDRUG_ALLOWED_HOSTS:-127.0.0.1,localhost,api}
+    DJANGO_HTTPS: ${ORIDRUG_HTTPS:-0}
+    ORIDRUG_FORWARDED_HOST: ${ORIDRUG_FORWARDED_HOST:-}
+    POSTGRES_HOST: db
+    POSTGRES_PASSWORD: ${ORIDRUG_DATABASE_KEY:?Start with the launcher to generate settings}
+    ORIDRUG_AGENT_ENCRYPTION_KEY: ${ORIDRUG_ENCRYPTION_KEY:?Start with the launcher to generate settings}
+    ORIDRUG_ENABLE_HUMAN_DOCKING: "1"
+  volumes:
+    - artifacts:/artifacts
+
+services:
+  db:
+    image: oridrug-release/postgres:17.12-0.7.1
+    platform: linux/amd64
+    pull_policy: never
+    environment:
+      POSTGRES_DB: oridrug
+      POSTGRES_USER: oridrug
+      POSTGRES_PASSWORD: ${ORIDRUG_DATABASE_KEY:?Start with the launcher to generate settings}
+    healthcheck:
+      test: [CMD, pg_isready, -U, oridrug, -d, oridrug]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+    volumes:
+      - database:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  setup:
+    <<: *backend
+    command: [python, manage.py, migrate, --noinput]
+    depends_on:
+      db:
+        condition: service_healthy
+
+  api:
+    <<: *backend
+    command: [gunicorn, --bind, "0.0.0.0:8000", --workers, "2", --threads, "4", --no-control-socket, config.wsgi:application]
+    depends_on:
+      setup:
+        condition: service_completed_successfully
+    healthcheck:
+      test: [CMD, python, -c, "from urllib.request import urlopen; urlopen('http://127.0.0.1:8000/api/health/', timeout=2).close()"]
+      interval: 5s
+      timeout: 4s
+      retries: 25
+    restart: unless-stopped
+
+  worker:
+    <<: *backend
+    command: [python, manage.py, procrastinate, worker, --concurrency, "2"]
+    init: true
+    cpus: 2
+    mem_limit: 1536m
+    depends_on:
+      setup:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+  web:
+    image: oridrug-release/web:0.7.1
+    platform: linux/amd64
+    pull_policy: never
+    environment:
+      ORIDRUG_FORWARD_PROTO: ${ORIDRUG_FORWARD_PROTO:-http}
+    tmpfs:
+      - /tmp
+    ports:
+      - "127.0.0.1:${ORIDRUG_PORT:-8789}:8080"
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  database:
+  artifacts:

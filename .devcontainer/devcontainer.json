@@ -1,0 +1,13 @@
+{
+  "name": "OriDrug 工作台",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:4": {}
+  },
+  "forwardPorts": [8789],
+  "portsAttributes": {
+    "8789": { "label": "OriDrug 工作台", "onAutoForward": "openBrowserOnce" }
+  },
+  "otherPortsAttributes": { "onAutoForward": "ignore" },
+  "postStartCommand": "bash portable/start.sh"
+}
