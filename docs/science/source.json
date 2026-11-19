@@ -1,0 +1,7 @@
+{
+  "package": "@rdkit/rdkit",
+  "version": "2026.9.2",
+  "source": "https://registry.npmjs.org/@rdkit/rdkit/-/rdkit-2026.9.2.tgz",
+  "integrity": "sha512-FHo8PMdtTFUO08f6SE8VHhcAwIE2645LrsWOhnGDdrAJVpC3x3y5/pTL00O2iSbCJc1w0IRVWiHabAJRnvDsAA==",
+  "licence": "https://raw.githubusercontent.com/rdkit/rdkit/master/license.txt"
+}
