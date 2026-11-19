@@ -4,6 +4,14 @@
 
 从研究问题出发，将 18 个药物研发阶段的证据、数据、计算和实验记录放在同一项目里。首页收录 98 张工作台实拍及各阶段演示。蛋白质与伊马替尼的展示取自[人 ABL1 实验结构 PDB 2HYY](https://www.rcsb.org/structure/2HYY)。
 
+## 0.8.2 全流程实机演示
+
+视频依次展示伊马替尼的十八阶段、网页端 DeepSeek 计划和项目资料、两类公开研究，以及 Windows 的本机操作和实际计算报告。旁白采用普通话男声，画面附中文字幕。
+
+[观看或下载演示视频](https://github.com/leisuper2006-collab/oridrug/releases/download/v0.8.2/OriDrug-Workflow-Demo.mp4) · [下载中文字幕](https://github.com/leisuper2006-collab/oridrug/releases/download/v0.8.2/OriDrug-Workflow-Demo.zh-CN.srt) · [0.8.2 发行版](https://github.com/leisuper2006-collab/oridrug/releases/tag/v0.8.2)
+
+从「我的项目」可打开厄洛替尼与 EGFR 突变肺癌、乳腺肿瘤与配对邻近组织表达。公开数据库入口位于「科研工具」。个人 API 设置位于「我的 → 模型连接」。Windows 在确认任务后可运行 2HYY 公开对接基准，并把报告存回项目。
+
 ## 第一次使用
 
 在网页注册后，直接进入「疾病与研发目标」，可新建课题或载入伊马替尼公开案例。已有项目可从上次的研究阶段继续。左侧是本阶段步骤，中间可编辑项目档案，右侧是研发目标、检查项和资料夹。点击「研究流程」可以切换 18 个阶段。网页和两款应用共用跨端研究账号。首次在新设备登录时联网，已有设备可离线使用。项目先在设备上加密，联网后同步。在「我的」可导出、恢复加密备份或导出项目报告。
