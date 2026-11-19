@@ -3,6 +3,8 @@
 const base = new URL('./', self.location.href).href;
 let loading;
 let dispatch;
+let interpreter;
+let installedCase;
 let pending = Promise.resolve();
 let chemistry;
 async function loadChemistry() {
@@ -25,6 +27,7 @@ async function load(id) {
         return response.arrayBuffer();
       });
       const py = await loadPyodide({ indexURL: base });
+      interpreter = py;
       await py.loadPackage(['sqlite3', 'ssl']);
       py.FS.mkdirTree('/workbench');
       py.unpackArchive(await source, 'zip', { extractDir: '/workbench' });
@@ -37,6 +40,15 @@ async function load(id) {
 async function handle(data) {
   try {
     await load(data.id);
+    if (data.op === 'ensure' && data.project?.example === true && !data.project.disablePublicCase && !data.project.portableImport) {
+      if (!installedCase) installedCase = (async () => {
+        const response = await fetch(base + 'public-case.zip');
+        if (!response.ok) throw new Error('伊马替尼公开案例暂时未完成下载，请重新打开。');
+        interpreter.FS.mkdirTree('/workbench/public-case');
+        interpreter.unpackArchive(await response.arrayBuffer(), 'zip', {extractDir:'/workbench/public-case'});
+      })().catch(error => { installedCase = undefined; throw error; });
+      await installedCase;
+    }
     let result = JSON.parse(dispatch(JSON.stringify(data)));
     if (result.status === 428 && JSON.parse(result.body).browserDependency === 'chemistry') {
       self.postMessage({ id: data.id, type: 'progress', stage: '正在载入分子结构工具' });
