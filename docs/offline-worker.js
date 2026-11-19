@@ -2,9 +2,9 @@
 'use strict'
 const scope = new URL(self.registration.scope)
 const prefix = 'oridrug-shell-' + scope.pathname
-const cacheName = prefix + 'fullweb-v2-f6fbc87e38b17f82c6'
+const cacheName = prefix + 'fullweb-v2-f08e6257bd873dd31d'
 const entry = new URL('index.html', scope).href
-const shell = ["assets/WorkflowOverlays-BSMdzXtk.css","assets/WorkflowOverlays-Kx2aSVl5.js","assets/jsx-runtime-Wy9s6hX0.js","assets/preload-helper-CgPOhYhF.js","assets/site-BmoyCo-e.js","assets/site-DNSWzCwe.css","index.html","workflow/lotus-approved-01.png"].map(path => new URL(path, scope).href)
+const shell = ["assets/WorkflowOverlays-BSMdzXtk.css","assets/WorkflowOverlays-DlpqZZ8W.js","assets/jsx-runtime-Wy9s6hX0.js","assets/preload-helper-CgPOhYhF.js","assets/site-DNSWzCwe.css","assets/site-PXh-OCem.js","index.html","workflow/lotus-approved-01.png"].map(path => new URL(path, scope).href)
 
 self.addEventListener('install', event => {
   event.waitUntil((async () => {
