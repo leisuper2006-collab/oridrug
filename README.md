@@ -1,24 +1,27 @@
 # OriDrug 科研工作台
 
-[打开网页并登录](https://leisuper2006-collab.github.io/oridrug/) · [下载 Windows 和 Android 应用](https://github.com/leisuper2006-collab/oridrug/releases/latest)
+[打开正式网页](https://leisuper2006-collab.github.io/oridrug/) · [安装与实操课程](https://github.com/leisuper2006-collab/oridrug/releases/tag/v0.8.3)
 
-从研究问题出发，将 18 个药物研发阶段的证据、数据、计算和实验记录放在同一项目里。首页收录 98 张工作台实拍及各阶段演示。蛋白质与伊马替尼的展示取自[人 ABL1 实验结构 PDB 2HYY](https://www.rcsb.org/structure/2HYY)。
+OriDrug 将研究问题、结构、计算、实验记录和公开临床证据放进同一个项目。注册后直接进入「疾病与研发目标」，可以新建项目或选择公开案例。网页和 Android 共用同一套十八个阶段。用手机进入项目后，点「研究流程」切换阶段，点「本页步骤」直接找表单，点「检查与交付」查看结果和版本。
 
-## 0.8.2 全流程实机演示
+### 用伊马替尼跟做
 
-视频依次展示伊马替尼的十八阶段、网页端 DeepSeek 计划和项目资料、两类公开研究，以及 Windows 的本机操作和实际计算报告。旁白采用普通话男声，画面附中文字幕。
+实操课程从新账号和空白项目起步。先填写研究目标，再连接个人模型，让助手把一句明确的研究问题写入页面。后续镜头带着同一项目操作检索、数据整理、结构、计算、实验资料和监管归档。每集带中文讲解与字幕。[课程目录](https://github.com/leisuper2006-collab/oridrug/releases/tag/v0.8.3)
 
-[观看或下载演示视频](https://github.com/leisuper2006-collab/oridrug/releases/download/v0.8.2/OriDrug-Workflow-Demo.mp4) · [下载中文字幕](https://github.com/leisuper2006-collab/oridrug/releases/download/v0.8.2/OriDrug-Workflow-Demo.zh-CN.srt) · [0.8.2 发行版](https://github.com/leisuper2006-collab/oridrug/releases/tag/v0.8.2)
+### 结构和数据
 
-从「我的项目」可打开厄洛替尼与 EGFR 突变肺癌、乳腺肿瘤与配对邻近组织表达。公开数据库入口位于「科研工具」。个人 API 设置位于「我的 → 模型连接」。Windows 在确认任务后可运行 2HYY 公开对接基准，并把报告存回项目。
+在「蛋白结构获取与预测」可打开项目已有结构、查找公开条目，或者导入 PDB 和 mmCIF 文件。手机可拖动与双指缩放，也可以选择轻量显示。在「结合口袋识别与准备」选参考配体及距离阈值，重新计算接触残基，再保存到项目。[人 ABL1 和伊马替尼实验结构 2HYY](https://www.rcsb.org/structure/2HYY)
 
-## 第一次使用
+「科研工具」提供公开数据库和课题检索。「项目资料」收录笔记、出处与附件，支持查看、下载和删除本人资料。从头像打开「个人空间」可以继续项目、管理归档与模板、连接模型、导出或恢复加密备份。用同一账号登录另一台设备即可继续处理项目和资料。
 
-在网页注册后，直接进入「疾病与研发目标」，可新建课题或载入伊马替尼公开案例。已有项目可从上次的研究阶段继续。左侧是本阶段步骤，中间可编辑项目档案，右侧是研发目标、检查项和资料夹。点击「研究流程」可以切换 18 个阶段。网页和两款应用共用跨端研究账号。首次在新设备登录时联网，已有设备可离线使用。项目先在设备上加密，联网后同步。在「我的」可导出、恢复加密备份或导出项目报告。
+### 科研社区
 
-「项目资料」按阶段列出原有笔记、证据来源、附件和计算回执。进入具体阶段即可保存记录与附件，检索文献和试验，检查表格或比较分子性质。需要电脑计算时，手机可将任务转交电脑。Windows 应用会在对应的功能内检查科研环境、协助安装并展示任务回执。
+从「社区」进入公开频道。可以筛选讨论、收藏或订阅内容，添加公开来源并保存私人草稿。在同一账号的另一台设备打开「草稿箱」即可接着写。帖子有证据卡时，可在详情中选择可写项目，把出处存入「文献与现有药物」。
 
-## 完整科研环境
+组织审批、多级项目组、群聊和 Skill 管理在完整科研工作台。下载完整工作台后启动，默认本机入口是 `http://127.0.0.1:8789/`。[完整工作台安装包](https://github.com/leisuper2006-collab/oridrug/releases/download/v0.8.3/OriDrug-Complete-Workspace.zip)
 
-运行本机科研服务或 GitHub Codespaces 可使用 [0.7.1 完整科研运行工具](https://github.com/leisuper2006-collab/oridrug/releases/tag/v0.7.1)。本机服务的工作台端口为 8789。需要把本机项目带到跨端账号时，在已登录的原版项目中打开账户菜单并导出项目 JSON，然后在网页版「我的项目」点击「导入本机原版项目」。导入会创建可独立编辑的副本。
+### 安装与继续计算
 
+Android 和 Windows 安装包都在发行版。需要电脑计算时，进入对接或动力学阶段的「计算与交接」查看要求并交给 Windows。[应用安装包](https://github.com/leisuper2006-collab/oridrug/releases/tag/v0.8.3)
+
+在本机原版项目中使用账户菜单导出项目 JSON，再在网页「我的项目」中点击「导入本机原版项目」，可建立可独立编辑的副本。
